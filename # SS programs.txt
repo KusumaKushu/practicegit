@@ -1,0 +1,48 @@
+# SS to backup the files
+#!/bin/bash
+
+Source_file="/c/Users/Admin/devops/"
+RemoteUser="backupuser"
+RemotesHost="192.168.1.100"
+RemoteDir="/backup/files"
+
+scp "$Source_file" "${RemoteUser}@${RemoteHost}:${RemoteDir}"
+
+if [ $? -eq 0 ]
+then
+        echo "Backup completed successfully"
+else
+        echo "backup failed"
+fi
+
+# SS to find CPU utilization
+
+#!/bin/bash
+Threshold=70
+CPU_usage=$(top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8}' | cut -d '.' -f1)
+echo "Current CPU usage: ${CPU_usage}%"
+if [ "$CPU_usage" -gt  "$Threshold" ];
+then
+        echo "Warning: Cpu utilization is ${CPU_usage}% (Threshold: ${Threshold} %)"
+        echo "CPU utilization is ${CPU_usage}% on $(hostname). " | mail -s "High CPU Utilization alert" admin@example.com
+else
+        echo "CPU utilization is under control."
+fi
+
+# SS to find disk use
+
+$ cat diskuse.sh
+#!/bin/bash
+Threshold="1G"
+DIR="/c/Users/Admin/devops/"
+Report="/tmp/large_files"
+Email="admin@ex.com"
+
+echo "files larger than $Threshold on $(date)" > $Report
+
+find / -type f -size +1G 2>/dev/null >> $Report
+
+echo "report generated at $Report"
+
+mail -s "large files report" $email < $Report
+
