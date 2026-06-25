@@ -10,6 +10,7 @@ read n3
 
 if [ $n1 -gt $n2 ] && [ $n1 -gt $n3 ]
 then
+<<<<<<< HEAD
 	echo "print $n1 is greatest"
 
 elif [ $n2 -gt $n1 ] && [ $n2 -gt $n3 ]
@@ -18,3 +19,14 @@ then
 else
 	echo "print $n3 is greatest"
 fi
+=======
+        echo "print $n1 is greatest"
+
+elif [ $n2 -gt $n1 ] && [ $n2 -gt $n3 ]
+then
+        echo "print $n2 is greatest"
+else
+        echo "print $n3 is greatest"
+fi
+
+>>>>>>> f309f1ad45a61f9291bbb0269cda561412d22a6a
